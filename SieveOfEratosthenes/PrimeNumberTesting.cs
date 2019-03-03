@@ -35,5 +35,17 @@ namespace SieveOfEratosthenes
                 Enumerable.Range(1, 120).Where(x => x % baseNum != 0).ToList(),
                 _primeNumber.RangeNumbers);
         }
+
+
+        [TestMethod]
+        public void GetTheLastNumber()
+        {
+            var lastNumber = _primeNumber.GetLastNumber();
+            Assert.AreEqual(
+                120,
+                lastNumber);
+        }
+
+        
     }
 }
