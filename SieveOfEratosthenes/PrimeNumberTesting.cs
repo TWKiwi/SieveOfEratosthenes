@@ -7,13 +7,14 @@ namespace SieveOfEratosthenes
     [TestClass]
     public class PrimeNumberTesting
     {
-        private readonly PrimeNumber _primeNumber = new PrimeNumber(120);
+        private readonly PrimeNumber _primeNumber = new PrimeNumber(_baseNum);
+        private static int _baseNum = 120;
 
         [TestMethod]
         public void InitWithNumAndShouldGetRangeOfNumbers()
         {
             CollectionAssert.AreEqual(
-                Enumerable.Range(1, 120).ToList(),
+                Enumerable.Range(1, _baseNum).ToList(),
                 _primeNumber.RangeNumbers.ToList());
         }
 
@@ -22,7 +23,7 @@ namespace SieveOfEratosthenes
         {
             var baseNum = 2;
             CollectionAssert.AreEqual(
-                Enumerable.Range(1, 120).Where(x => x % baseNum == 0).ToList(), 
+                Enumerable.Range(1, _baseNum).Where(x => x % baseNum == 0).ToList(), 
                 _primeNumber.GetMultipleOf(baseNum).ToList());
         }
 
@@ -32,7 +33,7 @@ namespace SieveOfEratosthenes
             var baseNum = 2;
             _primeNumber.RemoveNumber(baseNum);
             CollectionAssert.AreEqual(
-                Enumerable.Range(1, 120).Where(x => x % baseNum != 0).ToList(),
+                Enumerable.Range(1, _baseNum).Where(x => x % baseNum != 0).ToList(),
                 _primeNumber.RangeNumbers);
         }
 
@@ -42,7 +43,7 @@ namespace SieveOfEratosthenes
         {
             var lastNumber = _primeNumber.GetLastNumber();
             Assert.AreEqual(
-                120,
+                _baseNum,
                 lastNumber);
         }
 
