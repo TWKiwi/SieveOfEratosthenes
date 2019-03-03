@@ -18,20 +18,22 @@ namespace SieveOfEratosthenes
             var enumerator = RangeNumbers.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                if (LeftoverIsPrimes(enumerator.Current))
+                if (!LeftoverIsPrimes(enumerator.Current))
                 {
-                    break;
+                    RemoveMultipleNumber(enumerator.Current);
                 }
-
-                RemoveMultipleNumber(enumerator.Current);
             }
-
-            return RangeNumbers.ToList();
+            return RangeNumbers;
         }
 
         public void RemoveMultipleNumber(int num)
         {
-            RangeNumbers = RangeNumbers.Where(x => x % num != 0 || x == num).ToList();
+            RangeNumbers = RangeNumbers.Where(x => ExceptFirstTime(num, x)).ToList();
+        }
+
+        private static bool ExceptFirstTime(int num, int x)
+        {
+            return x % num != 0 || x == num;
         }
 
         public int GetLastNumber()
