@@ -6,11 +6,16 @@ namespace SieveOfEratosthenes
 {
     public class PrimeNumber
     {
-        public List<int> InitNumbers { get; set; }
+        public List<int> InitRange { get; set; }
 
         public PrimeNumber(int num)
         {
-            InitNumbers = Enumerable.Range(1,num).ToList();
+            InitRange = Enumerable.Range(1,num).ToList();
+        }
+
+        public int[] GetMultipleOf(int num)
+        {
+            throw new NotImplementedException();
         }
     }
 }

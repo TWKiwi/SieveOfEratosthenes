@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SieveOfEratosthenes
@@ -6,14 +7,22 @@ namespace SieveOfEratosthenes
     [TestClass]
     public class PrimeNumberTesting
     {
+        private readonly PrimeNumber _primeNumber = new PrimeNumber(120);
+
         [TestMethod]
         public void InitWithNumAndShouldGetRangeOfNumbers()
         {
-            var primeNumber = new PrimeNumber(120);
+            CollectionAssert.AreEqual(
+                Enumerable.Range(1, 120).ToList(),
+                _primeNumber.InitRange.ToList());
+        }
 
-            var initNumbers = primeNumber.InitNumbers;
-
-            CollectionAssert.AreEqual(Enumerable.Range(1, 120).ToList(), initNumbers.ToList());
+        [TestMethod]
+        public void GivenNumberFindTheMultipleOfNumber()
+        {
+            CollectionAssert.AreEqual(
+                Enumerable.Range(1, 120).Select(x =>x*2).ToList(), 
+                _primeNumber.GetMultipleOf(2).ToList());
         }
     }
 }
