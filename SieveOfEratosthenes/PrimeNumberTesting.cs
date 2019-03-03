@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -46,6 +47,17 @@ namespace SieveOfEratosthenes
                 _baseNum,
                 lastNumber);
         }
+
+        [TestMethod]
+        public void DetermineLeftoverIsPrimes()
+        {
+            var baseNum = 2;
+            _primeNumber.RemoveNumber(baseNum);
+            var actual = _primeNumber.LeftoverIsPrimes(baseNum);
+            Assert.AreEqual(false, actual);
+        }
+
+        
 
         
     }

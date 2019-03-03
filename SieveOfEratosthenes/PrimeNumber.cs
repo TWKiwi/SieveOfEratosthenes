@@ -34,5 +34,10 @@ namespace SieveOfEratosthenes
         {
             return RangeNumbers.Last();
         }
+
+        public bool LeftoverIsPrimes(int baseNum)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
