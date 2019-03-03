@@ -10,7 +10,7 @@ namespace SieveOfEratosthenes
 
         public PrimeNumber(int num)
         {
-            RangeNumbers = Enumerable.Range(1,num).ToList();
+            RangeNumbers = Enumerable.Range(2,num-1).ToList();
         }
 
         public IEnumerable<int> GetMultipleOf(int num)
@@ -27,7 +27,7 @@ namespace SieveOfEratosthenes
 
         public void RemoveMultipleNumber(int num)
         {
-            RangeNumbers = RangeNumbers.Where(x => x % num != 0 && x != num).ToList();
+            RangeNumbers = RangeNumbers.Where(x => x % num != 0 || x == num).ToList();
         }
 
         public int GetLastNumber()
@@ -38,6 +38,23 @@ namespace SieveOfEratosthenes
         public bool LeftoverIsPrimes(int baseNum)
         {
             return Math.Pow(baseNum, 2) >= GetLastNumber();
+        }
+
+
+        public List<int> AutoFindPrimes()
+        {
+            var enumerator = RangeNumbers.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                if (LeftoverIsPrimes(enumerator.Current))
+                {
+                    break;
+                }
+
+                RemoveMultipleNumber(enumerator.Current);
+            }
+
+            return RangeNumbers.ToList();
         }
     }
 }
