@@ -25,9 +25,9 @@ namespace SieveOfEratosthenes
             }
         }
 
-        public bool RemoveNumber(List<int> Nums)
+        public void RemoveNumber(int num)
         {
-            throw new NotImplementedException();
+            RangeNumbers = RangeNumbers.Where(x => x % num != 0).ToList();
         }
     }
 }

@@ -27,10 +27,10 @@ namespace SieveOfEratosthenes
         }
 
         [TestMethod]
-        public void RemoveListNumberWithGivenList()
+        public void RemoveListNumberWithGivenBaseNumber()
         {
             var baseNum = 2;
-            _primeNumber.RemoveNumber(_primeNumber.GetMultipleOf(baseNum).ToList());
+            _primeNumber.RemoveNumber(baseNum);
             CollectionAssert.AreEqual(
                 Enumerable.Range(1, 120).Where(x => x % baseNum != 0).ToList(),
                 _primeNumber.RangeNumbers);
