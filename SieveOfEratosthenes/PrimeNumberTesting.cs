@@ -22,15 +22,6 @@ namespace SieveOfEratosthenes
         }
 
         [TestMethod]
-        public void GivenNumberFindTheMultipleOfNumber()
-        {
-            var baseNum = 2;
-            CollectionAssert.AreEqual(
-                Enumerable.Range(_start, _end).Where(x => x % baseNum == 0).ToList(), 
-                _primeNumber.GetMultipleOf(baseNum).ToList());
-        }
-
-        [TestMethod]
         public void RemoveListNumberWithGivenBaseNumber()
         {
             var baseNum = 2;
