@@ -14,7 +14,7 @@ namespace SieveOfEratosthenes
         {
             CollectionAssert.AreEqual(
                 Enumerable.Range(1, 120).ToList(),
-                _primeNumber.InitRange.ToList());
+                _primeNumber.RangeNumbers.ToList());
         }
 
         [TestMethod]
@@ -24,6 +24,16 @@ namespace SieveOfEratosthenes
             CollectionAssert.AreEqual(
                 Enumerable.Range(1, 120).Where(x => x % baseNum == 0).ToList(), 
                 _primeNumber.GetMultipleOf(baseNum).ToList());
+        }
+
+        [TestMethod]
+        public void RemoveListNumberWithGivenList()
+        {
+            var baseNum = 2;
+            _primeNumber.RemoveNumber(_primeNumber.GetMultipleOf(baseNum).ToList());
+            CollectionAssert.AreEqual(
+                Enumerable.Range(1, 120).Where(x => x % baseNum != 0).ToList(),
+                _primeNumber.RangeNumbers);
         }
     }
 }

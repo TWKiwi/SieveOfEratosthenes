@@ -6,16 +6,16 @@ namespace SieveOfEratosthenes
 {
     public class PrimeNumber
     {
-        public List<int> InitRange { get; set; }
+        public List<int> RangeNumbers { get; set; }
 
         public PrimeNumber(int num)
         {
-            InitRange = Enumerable.Range(1,num).ToList();
+            RangeNumbers = Enumerable.Range(1,num).ToList();
         }
 
         public IEnumerable<int> GetMultipleOf(int num)
         {
-            var enumerator = InitRange.GetEnumerator();
+            var enumerator = RangeNumbers.GetEnumerator();
             while (enumerator.MoveNext())
             {
                 if (enumerator.Current % num == 0)
@@ -23,6 +23,11 @@ namespace SieveOfEratosthenes
                     yield return enumerator.Current;
                 }
             }
+        }
+
+        public bool RemoveNumber(List<int> Nums)
+        {
+            throw new NotImplementedException();
         }
     }
 }
