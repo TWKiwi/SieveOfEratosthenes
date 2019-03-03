@@ -29,5 +29,10 @@ namespace SieveOfEratosthenes
         {
             RangeNumbers = RangeNumbers.Where(x => x % num != 0).ToList();
         }
+
+        public int GetLastNumber()
+        {
+            return RangeNumbers.Last();
+        }
     }
 }
