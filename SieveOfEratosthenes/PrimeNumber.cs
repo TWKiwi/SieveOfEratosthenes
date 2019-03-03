@@ -37,7 +37,7 @@ namespace SieveOfEratosthenes
 
         public bool LeftoverIsPrimes(int baseNum)
         {
-            throw new NotImplementedException();
+            return Math.Pow(baseNum, 2) >= GetLastNumber();
         }
     }
 }
