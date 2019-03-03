@@ -25,9 +25,9 @@ namespace SieveOfEratosthenes
             }
         }
 
-        public void RemoveNumber(int num)
+        public void RemoveMultipleNumber(int num)
         {
-            RangeNumbers = RangeNumbers.Where(x => x % num != 0).ToList();
+            RangeNumbers = RangeNumbers.Where(x => x % num != 0 && x != num).ToList();
         }
 
         public int GetLastNumber()

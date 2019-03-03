@@ -32,9 +32,9 @@ namespace SieveOfEratosthenes
         public void RemoveListNumberWithGivenBaseNumber()
         {
             var baseNum = 2;
-            _primeNumber.RemoveNumber(baseNum);
+            _primeNumber.RemoveMultipleNumber(baseNum);
             CollectionAssert.AreEqual(
-                Enumerable.Range(1, _baseNum).Where(x => x % baseNum != 0).ToList(),
+                Enumerable.Range(1, _baseNum).Where(x => x % baseNum != 0 && x != baseNum).ToList(),
                 _primeNumber.RangeNumbers);
         }
 
@@ -52,13 +52,26 @@ namespace SieveOfEratosthenes
         public void DetermineLeftoverIsPrimes()
         {
             var baseNum = 2;
-            _primeNumber.RemoveNumber(baseNum);
-            var actual = _primeNumber.LeftoverIsPrimes(baseNum);
-            Assert.AreEqual(false, actual);
+            _primeNumber.RemoveMultipleNumber(baseNum);
+            Assert.AreEqual(false, _primeNumber.LeftoverIsPrimes(baseNum));
         }
 
-        
+        [TestMethod]
+        public void DetermineLeftoverIsPrimes_Ver2()
+        {
+            var baseNum = 2;
+            _primeNumber.RemoveMultipleNumber(baseNum);
+            baseNum = 3;
+            _primeNumber.RemoveMultipleNumber(baseNum);
+            baseNum = 5;
+            _primeNumber.RemoveMultipleNumber(baseNum);
+            baseNum = 7;
+            _primeNumber.RemoveMultipleNumber(baseNum);
+            baseNum = 11;
+            _primeNumber.RemoveMultipleNumber(baseNum);
+            Assert.AreEqual(true, _primeNumber.LeftoverIsPrimes(baseNum));
+        }
 
-        
+
     }
 }
