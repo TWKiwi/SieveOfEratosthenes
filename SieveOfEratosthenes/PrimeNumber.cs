@@ -13,9 +13,16 @@ namespace SieveOfEratosthenes
             InitRange = Enumerable.Range(1,num).ToList();
         }
 
-        public int[] GetMultipleOf(int num)
+        public IEnumerable<int> GetMultipleOf(int num)
         {
-            throw new NotImplementedException();
+            var enumerator = InitRange.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                if (enumerator.Current % num == 0)
+                {
+                    yield return enumerator.Current;
+                }
+            }
         }
     }
 }

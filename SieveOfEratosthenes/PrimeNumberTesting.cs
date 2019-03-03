@@ -20,9 +20,10 @@ namespace SieveOfEratosthenes
         [TestMethod]
         public void GivenNumberFindTheMultipleOfNumber()
         {
+            var baseNum = 2;
             CollectionAssert.AreEqual(
-                Enumerable.Range(1, 120).Select(x =>x*2).ToList(), 
-                _primeNumber.GetMultipleOf(2).ToList());
+                Enumerable.Range(1, 120).Where(x => x % baseNum == 0).ToList(), 
+                _primeNumber.GetMultipleOf(baseNum).ToList());
         }
     }
 }
